@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package co.edu.sena.views;
+package co.edu.sena.persa.views;
 
 /**
  *
@@ -48,10 +48,10 @@ public class JFrameHome extends javax.swing.JFrame {
         jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelTitulo.setText("Permisos y salidas clem");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/view/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/persa/view/logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jLabelLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/view/permiso.png"))); // NOI18N
+        jLabelLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/persa/view/permiso.png"))); // NOI18N
         jLabelLogo2.setText("jLabel2");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -137,7 +137,7 @@ public class JFrameHome extends javax.swing.JFrame {
                             .addComponent(jLabelLogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxCourses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCourses))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

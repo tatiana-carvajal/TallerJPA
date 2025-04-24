@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package co.edu.sena.views;
+package co.edu.sena.persa.views;
 
 /**
  *
@@ -56,11 +56,17 @@ public class JFrameHomeFks extends javax.swing.JFrame {
         jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelTitulo.setText("Permisos y salidas clem");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/view/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/persa/view/logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jLabelLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/view/permiso.png"))); // NOI18N
+        jLabelLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/co/edu/sena/persa/view/permiso.png"))); // NOI18N
         jLabelLogo2.setText("jLabel2");
+
+        jComboBoxPermission.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPermissionActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Permisos:");
@@ -186,7 +192,7 @@ public class JFrameHomeFks extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPermission_type)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,6 +209,10 @@ public class JFrameHomeFks extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxPermissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPermissionActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxPermissionActionPerformed
 
     /**
      * @param args the command line arguments

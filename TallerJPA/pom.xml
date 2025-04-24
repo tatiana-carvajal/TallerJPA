@@ -5,7 +5,6 @@
     <artifactId>TallerJPA</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-<<<<<<< Updated upstream
       <description>Taller conexion MySql en JPA </description>
     <organization> 
         <name>SENA</name>
@@ -75,8 +74,6 @@
             <version>2.2.3</version>
         </dependency>
     </dependencies>
-=======
->>>>>>> Stashed changes
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
