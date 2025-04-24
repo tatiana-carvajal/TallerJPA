@@ -21,8 +21,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- *
- * @author rojas
+ * Fecha : 24/4/2025
+ * @author Grupo 2
+ * Descripcion: Creacion de models
  */
 @Entity
 @Table(name = "course")

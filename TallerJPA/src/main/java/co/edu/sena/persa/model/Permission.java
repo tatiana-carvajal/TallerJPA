@@ -21,8 +21,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
- * @author rojas
+ * Fecha : 24/4/2025
+ * @author Grupo 2
+ * Descripcion: Creacion de models
  */
 @Entity
 @Table(name = "permission")

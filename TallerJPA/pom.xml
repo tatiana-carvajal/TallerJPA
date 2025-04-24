@@ -5,7 +5,7 @@
     <artifactId>TallerJPA</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-      <description>ejemplo conexion MySql en JPA </description>
+      <description>Taller conexion MySql en JPA </description>
     <organization> 
         <name>SENA</name>
     </organization>
