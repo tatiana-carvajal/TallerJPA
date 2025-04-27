@@ -3,85 +3,142 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package co.edu.sena.persa.controllers;
-
 import co.edu.sena.persa.model.Users;
-import co.edu.sena.persa.persistence.IUsersDAO;
+import co.edu.sena.persa.persistence.DAOFactory;
+import co.edu.sena.persa.persistence.EntityManagerHelper;
 import java.util.List;
 
 /**
- *
- * @author USUARIO
+ * fecha : 24/4/2025
+ * @author grupo 2
+ *  objetivo: Implementar la interface para controlar el model Users
  */
-public class UsersControllers implements IUsersDAO{
+public class UsersControllers implements  IUsersControllers{
 
     @Override
     public void insert(Users users) throws Exception {
-        if (users == null) {
-            throw new Exception("El usuario no puede ser nulo.");
-        }
-        if (users.getFullname() == null || users.getFullname().isEmpty()) {
-            throw new Exception("El nombre completo del usuario no puede estar vacío.");
-        }
-        if (users.getEmail() == null || users.getEmail().isEmpty()) {
-            throw new Exception("El correo electrónico del usuario no puede estar vacío.");
-        }
-        if (users.getPassword() == null || users.getPassword().isEmpty()) {
-            throw new Exception("La contraseña del usuario no puede estar vacía.");
-        }
-        if (users.getStatus() == null || users.getStatus().isEmpty()) {
-            throw new Exception("El estado del usuario no puede estar vacío.");
-        }
-        if (users.getRoleId() == null) {
-            throw new Exception("El usuario debe estar asociado a un rol.");
-        }
-
-        System.out.println("Usuario insertado: " + users);
-        
+       if (users == null) {
+            throw new Exception("El usuario es nulo.");
+       }
+       
+       if("".equals(users.getFullname()))
+       {
+           throw new Exception("El nombre completo es obligatorio");
+       }
+       
+       if("".equals(users.getEmail()))
+       {
+           throw new Exception("El correo es obligatorio");
+       }
+       
+       if("".equals(users.getPassword()))
+       {
+           throw new Exception("La contraseña  es obligatoria");
+       }
+       
+       if("".equals(users.getStatus()))
+       {
+           throw new Exception("El estado es obligatorio");
+       }
+       
+       //FK's
+       
+       if(users.getRoleId() == null)
+       {
+           throw new Exception("El usuario obligatorio");
+       }
     }
 
     @Override
     public void update(Users users) throws Exception {
-        if (users == null) {
-            throw new Exception("El usuario no puede ser nulo.");
+         if (users == null) {
+            throw new Exception("El usuario es  nulo.");
         }
+        
         if (users.getId() == null) {
-            throw new Exception("El ID del usuario no puede ser nulo para actualizar.");
+            throw new Exception("La id es obligatoria.");
+           }
+        
+         if("".equals(users.getFullname()))
+       {
+           throw new Exception("El nombre completo es obligatorio");
+       }
+       
+       if("".equals(users.getEmail()))
+       {
+           throw new Exception("El correo es obligatorio");
+       }
+       
+       if("".equals(users.getPassword()))
+       {
+           throw new Exception("La contraseña  es obligatoria");
+       }
+       
+       if("".equals(users.getStatus()))
+       {
+           throw new Exception("El estado es obligatorio");
+       }
+       
+       //FK's
+       
+       if(users.getRoleId() == null)
+       {
+           throw new Exception("El usuario obligatorio");
+       }
+       
+        //Consultar si usuaario existe en la bd
+        
+        Users userExist = DAOFactory.getuUsersDAO().findById(users.getId());
+        if(userExist == null)
+        {
+            throw new Exception("El usuario no existe");
         }
-
-        System.out.println("Usuario actualizado: " + users);
-      
+        
+        //Merge
+        
+        userExist.setId(users.getId());
+        userExist.setFullname(users.getFullname());
+        userExist.setEmail(users.getEmail());
+        userExist.setPassword(users.getPassword());
+        userExist.setStatus(users.getStatus());
+        userExist.setRoleId(users.getRoleId());
+        
+          //Actualizar
+        
+        EntityManagerHelper.beginTransaction();
+        DAOFactory.getuUsersDAO().update(users);
+        EntityManagerHelper.commit();
+        EntityManagerHelper.closeEntityManager();
     }
 
     @Override
-    public void delete(Users users) throws Exception {
-        if (users == null) {
-            throw new Exception("El usuario no puede ser nulo.");
-        }
-        if (users.getId() == null) {
-            throw new Exception("El ID del usuario no puede ser nulo para eliminar.");
+    public void delete(Long id) throws Exception {
+         if(id == 0)
+        {
+            throw new Exception("El usuario es obligatorio");
         }
         
-        System.out.println("Usuario eliminado: " + users);
-       
+        Users usersExist = DAOFactory.getuUsersDAO().findById(id);
+        if(usersExist == null)
+        {
+             throw new Exception("No existe un usuaario  con ese id");
+        }
     }
 
     @Override
     public Users findById(Long id) throws Exception {
-        if (id == null) {
-            throw new Exception("El ID del usuario no puede ser nulo.");
-        }
-    
-        System.out.println("Buscando usuario con ID: " + id);
-        return new Users(id, "Juan Pérez", "juan@example.com", "password123", "Activo");
-       
+        Users usersExist = DAOFactory.getuUsersDAO().findById(id);
+          if (usersExist == null)
+          {
+              throw  new Exception("No existe un usuario con ese id");
+          }
+          
+          return DAOFactory.getuUsersDAO().findById(id);
     }
 
     @Override
     public List<Users> findALL() throws Exception {
-                System.out.println("Obteniendo todos los usuarios.");
-        return List.of(
-            new Users(1L, "María López", "maria@example.com", "securepass", "Activo"),
-            new Users(2L, "Carlos Gómez", "carlos@example.com", "mypassword", "Inactivo"));
+         return DAOFactory.getuUsersDAO().findALL();
     }
     
 }

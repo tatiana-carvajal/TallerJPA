@@ -5,7 +5,7 @@
 package co.edu.sena.persa.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,17 +13,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
- * Fecha : 24/4/2025
- * @author Grupo 2
- * Descripcion: Creacion de models
+ *
+ * @author rojas
  */
 @Entity
 @Table(name = "course")
@@ -50,20 +49,11 @@ public class Course implements Serializable {
     private String trimester;
     @Basic(optional = false)
     @Column(name = "year")
-    private int year;
+    @Temporal(TemporalType.DATE)
+    private Date year;
     @Basic(optional = false)
     @Column(name = "status")
     private String status;
-    @JoinTable(name = "instructor_course", joinColumns = {
-        @JoinColumn(name = "course_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "instructor_id", referencedColumnName = "id")})
-    @ManyToMany
-    private List<Users> usersList;
-    @JoinTable(name = "apprentice_course", joinColumns = {
-        @JoinColumn(name = "course_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "user_id", referencedColumnName = "id")})
-    @ManyToMany
-    private List<Users> usersList1;
     @JoinColumn(name = "career_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Career careerId;
@@ -75,7 +65,7 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public Course(Long id, String shift, String trimester, int year, String status) {
+    public Course(Long id, String shift, String trimester, Date year, String status) {
         this.id = id;
         this.shift = shift;
         this.trimester = trimester;
@@ -107,11 +97,11 @@ public class Course implements Serializable {
         this.trimester = trimester;
     }
 
-    public int getYear() {
+    public Date getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Date year) {
         this.year = year;
     }
 
@@ -121,22 +111,6 @@ public class Course implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public List<Users> getUsersList() {
-        return usersList;
-    }
-
-    public void setUsersList(List<Users> usersList) {
-        this.usersList = usersList;
-    }
-
-    public List<Users> getUsersList1() {
-        return usersList1;
-    }
-
-    public void setUsersList1(List<Users> usersList1) {
-        this.usersList1 = usersList1;
     }
 
     public Career getCareerId() {
