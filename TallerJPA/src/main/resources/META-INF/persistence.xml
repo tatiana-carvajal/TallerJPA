@@ -3,6 +3,7 @@
   <persistence-unit name="co.edu.sena.persa_TallerJPA_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>co.edu.sena.persa.model.Course</class>
+    <class>co.edu.sena.persa.model.Career</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bdpersa?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="developer"/>
